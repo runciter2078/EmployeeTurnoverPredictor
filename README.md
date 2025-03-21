@@ -25,9 +25,6 @@ This repository contains a complete pipeline to preprocess employee and request 
   - Uses SHAP to provide local interpretability for individual predictions.
   - Exports prediction results (and optionally writes them to a database).
 
-- **employee_production_alternative.py** *(Optional)*  
-  An alternative version of the production pipeline which includes additional methods such as RandomForest and even a neural network implementation. It also demonstrates model explanation via ELI5. Use this version if you want to compare different modeling approaches.
-
 ## Data and Variables Used
 
 The pipeline uses a variety of employee variables to build the predictive model. Key variables include:
@@ -67,7 +64,6 @@ The pipeline uses a variety of employee variables to build the predictive model.
    ```bash
    pip install pandas numpy scikit-learn xgboost shap mysql-connector-python sqlalchemy
    ```
-   *(If using the alternative pipeline, also install imbalanced-learn, eli5, and tensorflow/keras as needed.)*
 
 2. **Configuration:**  
    - Update the connection parameters (host, database, user, password) in the production scripts if you plan to load data from a database.
@@ -76,21 +72,22 @@ The pipeline uses a variety of employee variables to build the predictive model.
 3. **Preprocessing:**  
    Run the pre-processing script to generate the cleaned data:
    ```bash
-   python employee_preprocess.py --input_employee_file path/to/employee_data.xlsx --input_request_file path/to/request_data.csv
+   python employee_preprocess.py --employee_file path/to/employee_data.xlsx --request_file path/to/request_data.csv
    ```
 
 4. **Training and Prediction:**  
    Run the production pipeline:
    ```bash
-   python employee_production.py --host YOUR_DB_HOST --db YOUR_DB_NAME --user YOUR_DB_USER --pwd YOUR_DB_PASSWORD
+   python employee_production.py --employee_file path/to/employee_data.xlsx --request_file path/to/request_data.csv
    ```
-   *(You can also run the alternative version using `employee_production_alternative.py` if desired.)*
+   *(If you use a database connection, ensure the script is updated with your connection parameters.)*
 
 5. **Results:**  
    The script will output:
    - A trained model with calibrated probabilities.
    - Prediction results with predicted turnover probabilities.
-   - Local explanations for each employee prediction using SHAP (or ELI5 in the alternative version).
+   - Local explanations for each employee prediction using SHAP (with a summary plot saved as `shap_summary.png`).
+   - A CSV file (`employee_turnover_predictions.csv`) containing the predictions and related data.
 
 ## Replication & Customization
 
@@ -106,5 +103,4 @@ Contributions, suggestions, and improvements are welcome. Please open an issue o
 ## License
 
 This project is licensed under the MIT License.
-
 ```
