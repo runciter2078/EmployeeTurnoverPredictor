@@ -1,5 +1,7 @@
 # EmployeeTurnoverPredictor
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A predictive modeling pipeline for forecasting employee voluntary turnover using advanced machine learning techniques and model interpretability tools.
 
 ## Overview
