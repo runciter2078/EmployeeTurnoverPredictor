@@ -51,8 +51,8 @@ The pipeline uses a variety of employee variables to build the predictive model.
     - **SIER:** Flag indicating if the employee’s salary is below the median of recently hired employees in the same profile.
     - **SIPET:** Flag based on salary desired in recent talent requests.
     - **SIPP:** Flag based on salary compared to the median salary of the professional profile.
-    - **SIPC:** Flag based on salary compared to the average salary of the employee’s position within the community.
-    - **SICT:** Flag based on salary relative to the center’s average salary.
+    - **SIPC:** Flag based on salary compared to the average salary of the employee’s position within the same branch/department.
+    - **SICT:** Flag based on salary relative to the work center’s (office) average salary.
   - Additional features from client and service data (e.g., number of clients in the last period, indicators of high client turnover).
 
 - **Engineered Aggregates:**
